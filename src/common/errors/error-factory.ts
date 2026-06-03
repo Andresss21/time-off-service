@@ -15,8 +15,14 @@ export class ErrorFactory {
     return new SecurityException({ error: 'Bad Request' }, HttpStatus.BAD_REQUEST, { reason: internalReason });
   }
 
-  notFound(resource: string, identifier: string): DomainException {
-    return new DomainException(HttpStatus.NOT_FOUND, 'NOT_FOUND', `${resource} '${identifier}' not found`);
+  notFound(
+    resource: string,
+    identifier: string,
+    overrides?: { code?: string; message?: string },
+  ): DomainException {
+    const code = overrides?.code ?? 'NOT_FOUND';
+    const message = overrides?.message ?? `${resource} '${identifier}' not found`;
+    return new DomainException(HttpStatus.NOT_FOUND, code, message);
   }
 
   conflict(message: string, code?: string): DomainException {

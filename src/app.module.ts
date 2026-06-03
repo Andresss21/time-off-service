@@ -12,7 +12,7 @@ import { validateEnv } from './common/config';
 import { DatabaseModule } from './database';
 import { AuditModule } from './audit';
 import { HealthModule } from './health';
-import { ErrorFactory } from './common/errors';
+import { BalanceModule } from './balance';
 import {
   FallbackExceptionFilter,
   InfrastructureExceptionFilter,
@@ -92,6 +92,7 @@ import { hcmConfig, auditConfig, throttlerConfig } from './common/config';
 
     // Phase 4 — HcmClientModule
     // Phase 5 — BalanceModule
+    BalanceModule,
     // Phase 6 — SyncModule
     // Phase 7 — TimeOffModule
     // Phase 8 — ReconciliationModule
@@ -110,9 +111,6 @@ import { hcmConfig, auditConfig, throttlerConfig } from './common/config';
     // Guards (evaluated in registration order: throttle before auth)
     { provide: APP_GUARD, useClass: ApiKeyThrottlerGuard },
     { provide: APP_GUARD, useClass: GlobalAuthGuard },
-
-    // Shared providers
-    ErrorFactory,
 
     // Phase 2+ — AuditService (added when AuditModule is wired)
   ],
