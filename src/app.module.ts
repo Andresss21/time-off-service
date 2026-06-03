@@ -11,6 +11,7 @@ import * as crypto from 'crypto';
 import { validateEnv } from './common/config';
 import { DatabaseModule } from './database';
 import { AuditModule } from './audit';
+import { HealthModule } from './health';
 import { ErrorFactory } from './common/errors';
 import {
   FallbackExceptionFilter,
@@ -87,6 +88,8 @@ import { hcmConfig, auditConfig, throttlerConfig } from './common/config';
     AuditModule,
 
     // Phase 3 — HealthModule
+    HealthModule,
+
     // Phase 4 — HcmClientModule
     // Phase 5 — BalanceModule
     // Phase 6 — SyncModule
