@@ -13,6 +13,7 @@ import { DatabaseModule } from './database';
 import { AuditModule } from './audit';
 import { HealthModule } from './health';
 import { BalanceModule } from './balance';
+import { SyncModule } from './sync';
 import {
   FallbackExceptionFilter,
   InfrastructureExceptionFilter,
@@ -21,6 +22,7 @@ import {
 } from './common/filters';
 import { ResponseEnvelopeInterceptor } from './common/interceptors';
 import { ApiKeyThrottlerGuard, GlobalAuthGuard } from './common/guards';
+import { ErrorFactory } from './common/errors';
 import { hcmConfig, auditConfig, throttlerConfig } from './common/config';
 
 @Module({
@@ -94,6 +96,7 @@ import { hcmConfig, auditConfig, throttlerConfig } from './common/config';
     // Phase 5 — BalanceModule
     BalanceModule,
     // Phase 6 — SyncModule
+    SyncModule,
     // Phase 7 — TimeOffModule
     // Phase 8 — ReconciliationModule
     // Phase 9 — PushModule
@@ -112,7 +115,8 @@ import { hcmConfig, auditConfig, throttlerConfig } from './common/config';
     { provide: APP_GUARD, useClass: ApiKeyThrottlerGuard },
     { provide: APP_GUARD, useClass: GlobalAuthGuard },
 
-    // Phase 2+ — AuditService (added when AuditModule is wired)
+    // Global shared providers
+    ErrorFactory,
   ],
 })
 export class AppModule {}
