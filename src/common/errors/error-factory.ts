@@ -29,6 +29,10 @@ export class ErrorFactory {
     return new DomainException(HttpStatus.CONFLICT, code ?? 'CONFLICT', message);
   }
 
+  validationError(message: string, code = 'VALIDATION_ERROR'): DomainException {
+    return new DomainException(HttpStatus.BAD_REQUEST, code, message);
+  }
+
   preValidationFailed(context: Record<string, unknown>): DomainException {
     return new DomainException(
       HttpStatus.UNPROCESSABLE_ENTITY,
