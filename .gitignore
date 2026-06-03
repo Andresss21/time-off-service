@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment files (never commit real secrets)
+.env
+.env.local
+.env.test
+
+# SQLite database files
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Prisma generated client (regenerated on build)
+# node_modules/@prisma/client is already covered above
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test coverage
+coverage/
+
+# TypeScript incremental build cache
+*.tsbuildinfo
