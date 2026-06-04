@@ -16,6 +16,7 @@ import { BalanceModule } from './balance';
 import { SyncModule } from './sync';
 import { TimeOffModule } from './time-off';
 import { ReconciliationModule } from './reconciliation';
+import { PushModule } from './push';
 import {
   FallbackExceptionFilter,
   InfrastructureExceptionFilter,
@@ -104,6 +105,7 @@ import { hcmConfig, auditConfig, throttlerConfig } from './common/config';
     // Phase 8 — ReconciliationModule
     ReconciliationModule,
     // Phase 9 — PushModule
+    PushModule,
   ],
   providers: [
     // Exception filters (registered in reverse; SecurityExceptionFilter evaluated first)

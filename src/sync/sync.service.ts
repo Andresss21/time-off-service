@@ -141,6 +141,10 @@ export class SyncService implements OnModuleInit {
     );
   }
 
+  async readGlobalCursor(): Promise<number | null> {
+    return this.syncRepository.readGlobalCursor();
+  }
+
   async applyCorpusPush(records: HcmBalanceRecord[]): Promise<void> {
     const newCursor = Math.max(...records.map((r) => r.lastSequence));
     await this.syncRepository.upsertBalanceCacheChunked(
