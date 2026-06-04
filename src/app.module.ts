@@ -15,6 +15,7 @@ import { HealthModule } from './health';
 import { BalanceModule } from './balance';
 import { SyncModule } from './sync';
 import { TimeOffModule } from './time-off';
+import { ReconciliationModule } from './reconciliation';
 import {
   FallbackExceptionFilter,
   InfrastructureExceptionFilter,
@@ -101,6 +102,7 @@ import { hcmConfig, auditConfig, throttlerConfig } from './common/config';
     // Phase 7 — TimeOffModule
     TimeOffModule,
     // Phase 8 — ReconciliationModule
+    ReconciliationModule,
     // Phase 9 — PushModule
   ],
   providers: [
