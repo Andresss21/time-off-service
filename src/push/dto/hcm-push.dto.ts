@@ -96,13 +96,13 @@ export class HcmPushDto {
   generatedAt: string;
 
   @IsInt() @Min(1)
+  @Validate(ExactlyOnePushPayloadConstraint)
   count: number;
 
   @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => CorpusPushRecordDto)
-  @Validate(ExactlyOnePushPayloadConstraint)
   records?: CorpusPushRecordDto[];
 
   @IsOptional()
